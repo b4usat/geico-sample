@@ -1,0 +1,48 @@
+@import './_variables.scss';
+@import './_mixins.scss';
+//@import '../../node_modules/bootstrap/scss/bootstrap';
+
+@import '~font-awesome/scss/font-awesome';
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+body {
+    font-family: $font-family;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+.header-style{
+    background-color: #1B509C;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    height: 70px;
+    vertical-align: middle;
+    font-size: $font-size;
+    font-family:Impact, Haettenschweiler, 'Franklin Gothic Bold', Charcoal, 'Helvetica Inserat', 'Bitstream Vera Sans Bold', 'Arial Black', 'sans serif'
+}
+
+.tab-style{
+    background-color: #407BD1;
+    height: 60px;
+    color:white;
+    padding: 10px;
+    font-size: 1em;
+    font-weight: bold; 
+    .selection{
+        font-size: 18px;
+        font-weight: bold;       
+        height: 10px;
+        padding-left: 2em;
+    }
+}
+
+.mat-tab-label {
+    font-weight: bold;
+    color: white;
+}
+
+.mat-tab-label-container{
+    background-color: #407BD1;
+}
+

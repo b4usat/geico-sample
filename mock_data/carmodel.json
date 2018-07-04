@@ -1,0 +1,86 @@
+{
+    "ACURA": [
+        {
+            "name": "ILX",
+            "value": "ILX"
+        },
+        {
+            "name": "ILX Hybrid",
+            "value": "ILX"
+        },
+        {
+            "name": "MDX",
+            "value": "MDX"
+        },
+        {
+            "name": "RL AWD",
+            "value": "RL"
+        }
+    ],
+    "MARTIN":[
+        {
+            "name": "V8 Vantage",
+            "value": "V8Vantage"
+        },
+        {
+            "name": "V8 Vantage GT",
+            "value": "V8VantageGT"
+        },
+        {
+            "name": "V8 Vantage S",
+            "value": "V8VantageS"
+        },
+        {
+            "name": "Vanquish",
+            "value": "Vanquish"
+        }
+    ],
+    "AUDI":[
+        {
+            "name": "A3",
+            "value": "A3"
+        },
+        {
+            "name": "A4",
+            "value": "A4"
+        },
+        {
+            "name": "A6",
+            "value": "A6"
+        },
+        {
+            "name": "A7",
+            "value": "A7"
+        },
+        {
+            "name": "A8 L",
+            "value": "A8L"
+        },
+        {
+            "name": "Q3 Premium",
+            "value": "Q3Premium"
+        },
+        {
+            "name": "Q5 Premium/SQ5 Premium Plus Quattro",
+            "value": "Q5Premium"
+        }
+    ],
+    "BMW":[
+        {
+            "name": "128 i",
+            "value": "128i"
+        },
+        {
+            "name": "135 i",
+            "value": "135i"
+        },
+        {
+            "name": "230 IxDrive",
+            "value": "230IxDrive"
+        },
+        {
+            "name": "535I GT (Gran Turismo)",
+            "value": "535IGT"
+        }
+    ]
+}

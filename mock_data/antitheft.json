@@ -1,0 +1,18 @@
+[
+    {
+        "value": "ND",
+        "name": "No Device"
+    },
+    {
+        "value": "AD",
+        "name": "Alarm Device Only(Type 1)"
+    },
+    {
+        "value": "PD",
+        "name": "Passive Device(Type 2)"
+    },
+    {
+        "value": "CB",
+        "name": "Combination (Type 2 + Type 3)"
+    }
+]

@@ -1,0 +1,261 @@
+<div class="content">
+  <div *ngIf="mytab; else other_content">
+    <div class="vehicle">
+      <div class="mt-3" *ngIf="showGrid">
+        <i class="fa fa-cart-plus fa-2x noshadow" style="color:#407BD1;" aria-hidden="true">
+          <span>
+            Selected Vehicle
+          </span>
+        </i>
+        <hr>
+        <div class="container">
+          <div class="row card">
+            <mat-card>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      Year
+                    </th>
+                    <th scope="col">
+                      Make
+                    </th>
+                    <th scope="col">
+                      Model
+                    </th>
+                    <th class="col-md-16" scope="col"></th>
+                    <th class="col-md-16" scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of vehicleDetails">
+                    <td>{{item.year}}</td>
+                    <td>{{item.make}}</td>
+                    <td>{{item.model}}</td>
+                    <td>
+                      <button (click)="editClick(item.Id)" mat-raised-button color="primary">
+                        Edit
+                      </button>
+                    </td>
+                    <td>
+                      <button mat-raised-button color="warn">
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      <form #vehicleForm="ngForm" (ngSubmit)="saveVehicleDetails(vehicleForm) " *ngIf="showSecondForm ">
+        <div class="card mt-3 ">
+          <i class="fa fa-car fa-2x " style="color:#407BD1; " aria-hidden="true ">
+            <span>
+              Add Vehicle
+            </span>
+          </i>
+          <div class="container mt-3 ">
+            <div class="row ">
+              <div class="col-md-3 vcenter align-middle ">Year</div>
+              <div class="col-md-2 ">
+                <mat-form-field>
+                  <mat-select required [(ngModel)]="selections.year " name="ddlyear " placeholder="Select Year ">
+                    <mat-option *ngFor="let y of yearCollection.years " [value]="y ">
+                      {{y}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 "></div>
+            </div>
+            <div class="row ">
+              <div class="col-md-3 vcenter ">Make</div>
+              <div class="col-md-2 ">
+                <mat-form-field>
+                  <mat-select required (selectionChange)="onCarManufacturerSelect($event) " name="ddlManufacturer
+                        " [(ngModel)]="selections.make " placeholder="Select Manufacturer ">
+                    <mat-option *ngFor="let list of carManufacturer |transfromArray " [value]="list.value ">
+                      {{list.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 "></div>
+            </div>
+            <div class="row ">
+              <div class="col-md-3 vcenter ">Model</div>
+              <div class="col-md-2 ">
+                <mat-form-field>
+                  <mat-select #carmodel placeholder="Select Model " [(ngModel)]="selections.model " name="ddlModel " disabled required>
+                    <mat-option *ngFor="let list of model |transfromArray " [value]="list.value ">
+                      {{list.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 "></div>
+            </div>
+            <div class="row ">
+              <div class="col-md-3 vcenter ">Anti-Theft Device</div>
+              <div class="col-md-2 ">
+                <mat-form-field>
+                  <mat-select placeholder="Select Device " [(ngModel)]="selections.device " name="ddlDevice ">
+                    <mat-option *ngFor="let list of device |transfromArray " [value]="list.value ">
+                      {{list.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6 "></div>
+            </div>
+            <div class="row ">
+              <div class="col-md-6 ">
+                <p>
+                  Is this vehicle owned, financed, or leased?
+                </p>
+                <div>
+                  <mat-radio-group class="matradio " required name="ddlOwner " [(ngModel)]="selections.ownership
+                        " (change)="onOwnershipChange($event) ">
+                    <mat-radio-button value="1 " required>Owned</mat-radio-button>
+                    <mat-radio-button value="2 " required>Financed</mat-radio-button>
+                    <mat-radio-button value="3 " required>Leased</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3 ">
+              <div class="col-md-6 ">
+                <p>
+                  How is this vehicle primarily used?
+                </p>
+                <div>
+                  <mat-radio-group class="matradio " [(ngModel)]="selections.mode " name="ddlMOde " (change)="onModeChange($event) " required>
+                    <mat-radio-button value="1 ">Commute (to work or school)</mat-radio-button>
+                    <mat-radio-button value="2 ">Pleasure</mat-radio-button>
+                    <mat-radio-button value="3 ">Business (sales calls, etc.)</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2 ">
+              <div class="col-md-8 " *ngIf="selections.mode==1 ">
+                <p style="margin-bottom: 3px; ">
+                  Days driven to work and/or school
+                </p>
+                <mat-form-field>
+                  <mat-select placeholder="Select days " [(ngModel)]="selections.day " name="ddlDay ">
+                    <mat-option [value]=1>1</mat-option>
+                    <mat-option [value]=2>2</mat-option>
+                    <mat-option [value]=3>3</mat-option>
+                    <mat-option [value]=4>4</mat-option>
+                    <mat-option [value]=5>5</mat-option>
+                    <mat-option [value]=6>6</mat-option>
+                    <mat-option [value]=7>7</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row mt-2 " *ngIf="selections.mode==1 ">
+              <div class="col-md-8 ">
+                <p style="margin-bottom: 3px; ">
+                  Miles driven to work/school (one way)
+                </p>
+                <mat-form-field>
+                  <input matInput placeholder="Input Miles " [(ngModel)]="selections.daymile " name="ddlDayMile
+                        " (keypress)="onlyNumberKey($event) ">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row mt-2 ">
+              <div class="col-md-8 " *ngIf="selections.mode==3 ">
+                <p style="margin-bottom: 3px; ">
+                  How is this vehicle used in business?
+                </p>
+                <mat-form-field>
+                  <mat-select placeholder="Select " [(ngModel)]="selections.business " name="ddlBusiness ">
+                    <mat-option [value]='Clergy'>Clergy</mat-option>
+                    <mat-option [value]='Daycare'>Daycare</mat-option>
+                    <mat-option [value]='DR'>Delivery - Route (Newspaper, Etc.)</mat-option>
+                    <mat-option [value]='RE'>Real Estate - Show / Visit Property</mat-option>
+                    <mat-option [value]='Sales'>Sales - Multistate</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row mt-2 " *ngIf="selections.mode==1||selections.mode==2||selections.mode==3 ">
+              <div class="col-md-8 ">
+                <mat-form-field>
+                  <mat-select #selectAnnualMileage placeholder="Annual Mileage " [(ngModel)]="selections.miles " name="ddlMiles ">
+                    <mat-option [value]=3000>0 - 3,000</mat-option>
+                    <mat-option [value]=5000>3,001 - 5,000</mat-option>
+                    <mat-option [value]=6000>5,001 - 6,000</mat-option>
+                    <mat-option [value]=7500>6,001 - 7,500</mat-option>
+                    <mat-option [value]=9000>7,501 - 9,000</mat-option>
+                    <mat-option [value]=12000>9,001 - 12,000</mat-option>
+                    <mat-option [value]=15000>12,001 - 15,000</mat-option>
+                    <mat-option [value]=20000>15,001 - 20,000</mat-option>
+                    <mat-option [value]=21000>20,001+</mat-option>
+                  </mat-select>
+
+                </mat-form-field>
+              </div>
+              <div class="card ">
+                <div class="panel ">
+                  <i class="fa fa-info-circle " style="color: #ffd740 "></i>
+                  <p>
+                    We have estimated your annual mileage based on your responses. You may change the selection if your specific mileage differs
+                    from this calculation.
+                  </p>
+                  <hr>
+                  <p>
+                    This rate quote does not include coverages for customizations to your auto. If your vehicle is customized, please call us
+                    at
+                    <a href='tel:(800) 841-5660'>(800) 841-5660</a>.
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="container " *ngIf="!editEnabled">
+            <div>
+              <h3>
+                Do you have another vehicle?
+              </h3>
+              <p>
+                You may be eligible for a multi-car discount!
+              </p>
+              <div class="float-right ">
+                <div class="button-row p-3 ">
+                  <button type="submit " mat-raised-button (click)="isSaveAnother=true">Yes</button>&#160;&#160;
+                  <button type="submit " mat-raised-button>No</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container " *ngIf="editEnabled">
+              <div class="float-right ">
+                  <div class="button-row p-3 ">
+                    <button class="editSave" type="submit " mat-raised-button>Save</button>&#160;&#160;
+                    <button type="button " mat-raised-button color="warn">Cancel</button>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="container ">
+        <h3>
+
+        </h3>
+      </div>
+    </div>
+
+  </div>
+
+
+  <ng-template #other_content> {{selectTab}} content here...</ng-template>
+</div>

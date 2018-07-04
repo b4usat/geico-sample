@@ -1,0 +1,46 @@
+[
+    {
+        "value": "ACURA",
+        "name": "ACURA"
+    },
+    {
+        "value": "MARTIN",
+        "name": "Aston Martin"
+    },
+    {
+        "value": "AUDI",
+        "name": "AUDI"
+    },
+    {
+        "value": "BMW",
+        "name": "BMW"
+    },
+    {
+        "value": "CAD",
+        "name": "Cadillac"
+    },
+    {
+        "value": "CHEV",
+        "name": "Chevrolet"
+    },
+    {
+        "value": "MINI",
+        "name": "Mini Cooper"
+    },
+    {
+        "value": "PORSCHE",
+        "name": "Porsche"
+    },
+    {
+        "value": "TOYOTA",
+        "name": "Toyota"
+    },
+    {
+        "value": "VOLKS",
+        "name": "Volkswagen"
+    },
+    {
+        "value": "LEXS",
+        "name": "Lexus"
+    }
+]
